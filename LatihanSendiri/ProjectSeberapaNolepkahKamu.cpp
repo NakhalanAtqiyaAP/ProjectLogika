@@ -1,47 +1,75 @@
 #include <iostream>
 #include <string>
+#include <cmath>
+
 using namespace std;
 
 int nontonAnimeMovie()
 {
     int jumlahNonton;
-    int durasi[100];
+    string durasi[100];
+    int jumlah;
+
     cout<<"Masukan berapa jumlah anime movie yang kamu nonton: ";
     cin>>jumlahNonton;
-    cout<<"Masukan berapa lama durasi movie anime mu"<<endl;
-    for(int i =1; i <= jumlahNonton; i++)
+    cout<<"Masukan berapa lama durasi movie anime mu "<<endl;
+
+    int waktuUbah= stoi(durasi[100]);
+    string menitUbah= durasi[100].substr(waktuUbah.length() -1);
+
+    for(int i =0; i < jumlahNonton; ++i)
     {
         cout<<"Movie ke-"<<i + 1<<":";
+        cin>>durasi[i];
         
-       
     }
+
+     jumlah=0;
+    for (int i=0;i<jumlahNonton;i++){
+        jumlah=jumlah+waktuUbah;
+    }
+    cout<<"jumlah nonton seluruhnya: "<<jumlah<<","<<menitUbah;
     return 0;
 }
+
 int nontonAnimeSeries()
 {
-    int jumlahNonton;
     string namaAnime;
-    
-    printf("Masukan Nama Anime: ");
-    scanf("%s", &namaAnime);
+    int jumlahNonton;
 
-    printf("Masukan Jumlah eps yang kamu nonton(Perhari): ");
-    cin>>jumlahNonton;
+   cout << "Masukan Nama Anime: ";
+cin >> namaAnime;
 
-    int totalNonton= jumlahNonton * 24;
-    string hasil= (totalNonton <= 59)? "menit" : "jam";
-    if(totalNonton == "jam")
-    {
-    cout<<"\n Total jam yang kamu lakukan untuk nonton"<<namaAnime<<" adalah "<<totalNonton<<" Menit";
-    }else if(totalNonton == "menit")
-    {
-    //rumus menit ke jam
-    cout<<"\n Total jam yang kamu lakukan untuk nonton"<<namaAnime<<" adalah "<<totalNonton<<" Menit";
-    }
+cout << "Masukan Durasi Episode anime (dalam menit): ";
+int durasiEpisode;
+cin >> durasiEpisode;
 
+cout << "Masukan Jumlah eps yang kamu nonton (Perhari): ";
+cin >> jumlahNonton;
+
+int totalNonton = jumlahNonton * durasiEpisode;
+int jam = totalNonton / 60;
+int menit = totalNonton % 60; 
+if (totalNonton >= 288 && totalNonton < 384)
+{
+    cout<<"Anda Nolep \n";
+}else if(totalNonton >= 384)
+{
+    cout<<"Anda nolep dan beban keluarga, mending mati aja \n";
+}else
+{
+    cout<<"Selamat Anda Bukan nolep \n";
+}
+
+if (totalNonton <= 59) {
+    cout <<"Total nonton " << namaAnime << " adalah " << totalNonton << " Menit";
+} else {
+    cout <<"Total nonton " << namaAnime << " adalah " << jam << "," << menit << " Jam";
+}
    
     return 0;
 }
+
 int main()
 {
     string jenisAnime;
